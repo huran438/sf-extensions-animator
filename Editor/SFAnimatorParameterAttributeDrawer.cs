@@ -23,19 +23,19 @@ namespace _Client_.AnimatorExtensions.Editor
 
 
             var animatorParamAttribute = GetAttribute<SFAnimatorParameterAttribute>();
-            var animatorController = GetAnimatorController(property, animatorParamAttribute.AnimatorName);
+            var animatorControllerParameters = GetAnimatorController(property, animatorParamAttribute.AnimatorName);
 
-            if (animatorController == null)
+            if (animatorControllerParameters == null)
             {
                 EditorGUI.HelpBox(rect, InvalidAnimatorControllerWarningMessage, MessageType.Warning);
                 return;
             }
 
-            var parametersCount = animatorController.parameters.Length;
+            var parametersCount = animatorControllerParameters.Length;
             var animatorParameters = new List<AnimatorControllerParameter>(parametersCount);
             for (var i = 0; i < parametersCount; i++)
             {
-                var parameter = animatorController.parameters[i];
+                var parameter = animatorControllerParameters[i];
                 if (animatorParamAttribute.AnimatorParamType == null || parameter.type == animatorParamAttribute.AnimatorParamType)
                 {
                     animatorParameters.Add(parameter);
@@ -75,9 +75,9 @@ namespace _Client_.AnimatorExtensions.Editor
 
             var displayOptions = GetDisplayOptions(animatorParameters);
 
-            
+
             EditorGUI.BeginChangeCheck();
-            
+
             var newIndex = EditorGUI.Popup(rect, label.text, index, displayOptions);
             var newValue = newIndex == 0 ? 0 : animatorParameters[newIndex - 1].nameHash;
 
@@ -129,7 +129,7 @@ namespace _Client_.AnimatorExtensions.Editor
             return displayOptions;
         }
 
-        private static AnimatorController GetAnimatorController(SerializedProperty property, string animatorName)
+        private static AnimatorControllerParameter[] GetAnimatorController(SerializedProperty property, string animatorName)
         {
             var animatorProperty = property.serializedObject.FindProperty(animatorName);
             if (animatorProperty == null)
@@ -137,12 +137,12 @@ namespace _Client_.AnimatorExtensions.Editor
                 animatorProperty = property.serializedObject.FindProperty("_value").FindPropertyRelative(animatorName);
                 if (animatorProperty == null) return null;
             }
+
             var animatorObject = animatorProperty.objectReferenceValue;
             if (animatorObject == null) return null;
             var animator = animatorObject as Animator;
             if (animator == null) return null;
-            var animatorController = animator.runtimeAnimatorController as AnimatorController;
-            return animatorController;
+            return animator.parameters;
         }
     }
 }
