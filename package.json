@@ -1,0 +1,14 @@
+﻿{
+  "author": "Secret Place Studio",
+  "name": "sp.sframework.extensions.animator",
+  "displayName": "SF Animator Extensions",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "animator",
+    "sframework",
+    "extensions"
+  ],
+  "category": "SFramework",
+  "type": "library"
+}
