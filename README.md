@@ -2,8 +2,6 @@
 
 # SF Animator Extensions
 
-[Documentation website](https://docs.secretplace.studio/#sf-extensions-animator)
-
 An Inspector dropdown for Animator parameter names and hashes. Add `[SFAnimatorParameter]` to a serialized string or integer field, identify a serialized Animator field on the same object, and choose a parameter from its controller.
 
 Package: `sp.sframework.extensions.animator` · Version: `1.0.0` · [MIT license](LICENSE.md)
