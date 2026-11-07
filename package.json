@@ -10,5 +10,8 @@
     "extensions"
   ],
   "category": "SFramework",
+  "dependencies": {
+    "com.unity.modules.animation": "1.0.0"
+  },
   "type": "library"
 }

@@ -1,0 +1,24 @@
+{
+  "name": "SFramework.Animator.Editor.Tests",
+  "rootNamespace": "SFramework.Animator.Editor.Tests",
+  "references": [
+    "SFramework.Animator.Runtime",
+    "SFramework.Animator.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
